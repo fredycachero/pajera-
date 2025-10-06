@@ -15,6 +15,7 @@
       align-items: center;
       font-family: "Poppins", sans-serif;
       overflow: hidden;
+      text-align: center;
     }
 
     h1 {
@@ -39,8 +40,22 @@
       transform: scale(1.05);
     }
 
-    .carta {
+    .broma, .carta {
       display: none;
+    }
+
+    .dedo {
+      font-size: 100px;
+      margin: 10px 0;
+    }
+
+    .texto-broma {
+      color: white;
+      font-size: 1.2em;
+      margin-bottom: 20px;
+    }
+
+    .carta {
       margin: 20px;
       padding: 20px;
       background: rgba(255, 255, 255, 0.9);
@@ -48,7 +63,6 @@
       max-width: 90%;
       color: #444;
       font-size: 1em;
-      text-align: center;
       box-shadow: 0 2px 8px rgba(0,0,0,0.2);
       animation: fadeIn 1.5s ease-in-out;
     }
@@ -73,7 +87,14 @@
 </head>
 <body>
   <h1>💖 Una sorpresa para ti 💖</h1>
-  <button id="boton">PRESIONA P PAJERA</button>
+  <button id="primerBoton">PRESIONA P PAJERA</button>
+
+  <div class="broma" id="broma">
+    <div class="dedo">🖕</div>
+    <div class="texto-broma">MI DEDO 😆</div>
+    <div class="texto-broma">BROMIS BROMIS, AHORA SÍ PRESIONA XD</div>
+    <button id="segundoBoton">AHORA SÍ 💌</button>
+  </div>
 
   <div class="carta" id="carta">
     <p>
@@ -82,18 +103,22 @@
     </p>
   </div>
 
-  <audio id="musica" src="https://www.youtube.com/embed/wu5kZ0pYbqs"></audio>
-
   <script>
-    const boton = document.getElementById('boton');
+    const primerBoton = document.getElementById('primerBoton');
+    const segundoBoton = document.getElementById('segundoBoton');
+    const broma = document.getElementById('broma');
     const carta = document.getElementById('carta');
-    const musica = document.getElementById('musica');
 
-    boton.addEventListener('click', () => {
+    primerBoton.addEventListener('click', () => {
+      primerBoton.style.display = 'none';
+      document.querySelector('h1').style.display = 'none';
+      broma.style.display = 'block';
+    });
+
+    segundoBoton.addEventListener('click', () => {
+      broma.style.display = 'none';
       carta.style.display = 'block';
       crearCorazones();
-      // No se puede reproducir directamente de YouTube en <audio>, debes usar un MP3 o archivo local.
-      alert("💞 Reproduce la canción: 'Querer Querernos (acústica)' de Canserbero mientras lees 💞");
     });
 
     function crearCorazones() {
