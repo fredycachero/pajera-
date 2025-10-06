@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para mi Pajera 💖</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ffb6c1, #e6a8ff);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: "Poppins", sans-serif;
+      overflow: hidden;
+    }
+
+    h1 {
+      color: white;
+      font-size: 1.8em;
+      text-shadow: 0 0 5px #ff4081;
+    }
+
+    button {
+      background-color: #ff4d6d;
+      color: white;
+      border: none;
+      padding: 15px 25px;
+      border-radius: 20px;
+      font-size: 1.2em;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
+    .carta {
+      display: none;
+      margin: 20px;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 15px;
+      max-width: 90%;
+      color: #444;
+      font-size: 1em;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    .corazon {
+      position: fixed;
+      font-size: 20px;
+      color: red;
+      animation: caer 6s linear infinite;
+    }
+
+    @keyframes caer {
+      0% {transform: translateY(-10vh) rotate(0deg);}
+      100% {transform: translateY(110vh) rotate(360deg);}
+    }
+  </style>
+</head>
+<body>
+  <h1>💖 Una sorpresa para ti 💖</h1>
+  <button id="boton">PRESIONA P PAJERA</button>
+
+  <div class="carta" id="carta">
+    <p>
+      (Aquí irá tu carta, amor... ✨)<br>
+      Escríbela más tarde y quedará aquí 💌
+    </p>
+  </div>
+
+  <audio id="musica" src="https://www.youtube.com/embed/wu5kZ0pYbqs"></audio>
+
+  <script>
+    const boton = document.getElementById('boton');
+    const carta = document.getElementById('carta');
+    const musica = document.getElementById('musica');
+
+    boton.addEventListener('click', () => {
+      carta.style.display = 'block';
+      crearCorazones();
+      // No se puede reproducir directamente de YouTube en <audio>, debes usar un MP3 o archivo local.
+      alert("💞 Reproduce la canción: 'Querer Querernos (acústica)' de Canserbero mientras lees 💞");
+    });
+
+    function crearCorazones() {
+      for (let i = 0; i < 25; i++) {
+        const corazon = document.createElement('div');
+        corazon.classList.add('corazon');
+        corazon.innerHTML = Math.random() > 0.5 ? '❤️' : '💗';
+        corazon.style.left = Math.random() * 100 + 'vw';
+        corazon.style.animationDuration = (4 + Math.random() * 3) + 's';
+        document.body.appendChild(corazon);
+
+        setTimeout(() => {
+          corazon.remove();
+        }, 7000);
+      }
+    }
+  </script>
+</body>
+</html>
